@@ -1,2 +1,4 @@
 # my_framework
 一款自己的轻量级mvc框架
+## my_framework_test
+my_framework_test是基于smart_framework测试的工程，是一款单体应用，里面自己封装了较为完善的JDBC操作，并使用servlet原生Tomcat类。慢慢会进行拓展，加入自己的MVC架构。
