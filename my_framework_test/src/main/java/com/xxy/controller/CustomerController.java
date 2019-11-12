@@ -1,10 +1,13 @@
 package com.xxy.controller;
 
-import com.sun.glass.ui.View;
+import com.xxy.annotation.Action;
+import com.xxy.annotation.Controller;
+import com.xxy.annotation.Inject;
+import com.xxy.bean.Param;
+import com.xxy.bean.View;
 import com.xxy.model.Customer;
 import com.xxy.service.CustomerService;
 
-import javax.xml.ws.Action;
 import java.util.List;
 
 

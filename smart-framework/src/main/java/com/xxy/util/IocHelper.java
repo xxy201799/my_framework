@@ -1,6 +1,5 @@
 package com.xxy.util;
 
-import com.sun.deploy.util.ArrayUtil;
 import com.xxy.annotation.Inject;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;
@@ -33,7 +32,7 @@ public class IocHelper {
                             Object beanFieldInstance = beanMap.get(beanFieldClass);
                             if(beanFieldInstance != null){
                                 //通过反射初始化BeanField的值
-                                ReflectionUtil.setField(beanInstance,beanField,beanFieldClass);
+                                ReflectionUtil.setField(beanInstance,beanField,beanFieldInstance);
                             }
                         }
                     }

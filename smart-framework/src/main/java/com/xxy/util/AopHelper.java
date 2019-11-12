@@ -2,8 +2,11 @@ package com.xxy.util;
 
 import com.xxy.annotation.Aspect;
 import com.xxy.annotation.ProxyManager;
+import com.xxy.annotation.Service;
+import com.xxy.annotation.Transaction;
 import com.xxy.proxy.AspectProxy;
 import com.xxy.proxy.Proxy;
+import com.xxy.proxy.TransactionProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,6 +46,11 @@ public final class AopHelper {
 
     private static Map<Class<?>, Set<Class<?>>> createProxyMap() throws Exception{
         Map<Class<?>, Set<Class<?>>> proxyMap = new HashMap<Class<?>, Set<Class<?>>>();
+
+        return proxyMap;
+    }
+
+    private static void addAspectProxy(Map<Class<?>, Set<Class<?>>> proxyMap) throws  Exception{
         Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySupper(AspectProxy.class);
         for(Class<?> proxyClass : proxyClassSet){
             if(proxyClass.isAnnotationPresent(Aspect.class)){
@@ -51,7 +59,11 @@ public final class AopHelper {
                 proxyMap.put(proxyClass, targetClassSet);
             }
         }
-        return proxyMap;
+    }
+
+    private static void addTransactionProxy(Map<Class<?>, Set<Class<?>>> proxyMap){
+        Set<Class<?>> serviceClassSet = ClassHelper.getClassSetByAnnotation(Service.class);
+        proxyMap.put(TransactionProxy.class, serviceClassSet);
     }
 
     private static Map<Class<?>, List<Proxy>> createTargetMap(Map<Class<?>, Set<Class<?>>> proxyMap)throws Exception{

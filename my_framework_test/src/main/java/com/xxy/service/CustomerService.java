@@ -1,5 +1,7 @@
 package com.xxy.service;
 
+import com.xxy.annotation.Service;
+import com.xxy.annotation.Transaction;
 import com.xxy.model.Customer;
 import com.xxy.util.DatabaseHelper;
 import com.xxy.util.PropsUtil;
@@ -12,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+@Service
 public class CustomerService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);
@@ -38,6 +41,7 @@ public class CustomerService {
     /**
      * 创建客户
      */
+    @Transaction
     public boolean createCustomer(Map<String, Object> fieldMap){
         return DatabaseHelper.insertEntity(Customer.class, fieldMap);
     }
@@ -45,6 +49,7 @@ public class CustomerService {
     /**
      * 更新客户
      */
+    @Transaction
     public boolean updateCustomer(Long id, Map<String, Object> fieldMap){
         return DatabaseHelper.updateEntity(Customer.class, id, fieldMap);
     }
@@ -52,6 +57,7 @@ public class CustomerService {
     /**
      * 删除客户
      */
+    @Transaction
     public  boolean deleteCustomer(Long id){
         return DatabaseHelper.deleteEntity(Customer.class, id);
     }
