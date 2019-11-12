@@ -1,9 +1,8 @@
 package com.xxy.util;
 
 import com.xxy.annotation.Aspect;
-import com.xxy.annotation.ProxyManager;
+import com.xxy.proxy.ProxyManager;
 import com.xxy.annotation.Service;
-import com.xxy.annotation.Transaction;
 import com.xxy.proxy.AspectProxy;
 import com.xxy.proxy.Proxy;
 import com.xxy.proxy.TransactionProxy;
@@ -46,7 +45,8 @@ public final class AopHelper {
 
     private static Map<Class<?>, Set<Class<?>>> createProxyMap() throws Exception{
         Map<Class<?>, Set<Class<?>>> proxyMap = new HashMap<Class<?>, Set<Class<?>>>();
-
+        addAspectProxy(proxyMap);
+        addTransactionProxy(proxyMap);
         return proxyMap;
     }
 

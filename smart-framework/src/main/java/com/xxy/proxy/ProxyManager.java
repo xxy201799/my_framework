@@ -1,4 +1,4 @@
-package com.xxy.annotation;
+package com.xxy.proxy;
 
 import com.xxy.proxy.Proxy;
 import com.xxy.proxy.ProxyChain;
